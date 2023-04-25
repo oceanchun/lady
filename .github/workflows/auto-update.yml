@@ -18,7 +18,7 @@ jobs:
 
       - name: Fetch upstream
         run: |
-          git remote add upstream https://github.com/Gnuyoah/Thread.git
+          git remote add lady https://github.com/Gnuyoah/Thread.git
           git fetch upstream
 
       - name: Merge upstream changes
