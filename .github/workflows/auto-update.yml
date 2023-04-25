@@ -15,14 +15,14 @@ jobs:
 
       - name: Fetch upstream
         run: |
-          git remote add upstream https://github.com/Gnuyoah/Thread.git
-          git fetch upstream
+          git remote add lady https://github.com/Gnuyoah/Thread.git
+          git fetch lady
           
       - name: Sync with upstream
         run: |
-          git fetch upstream
+          git fetch lady
           git checkout main
-          git merge upstream/main --no-edit
+          git merge lady/main --no-edit
           git push
 
     
