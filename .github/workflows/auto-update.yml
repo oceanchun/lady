@@ -28,4 +28,10 @@ jobs:
       - name: Push changes
         run: |
           git push origin main
-
+          uses: ad-m/github-push-action@main
+          with:
+            branch: main
+            github_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+            force: true
+            github_url: https://github.com
+            directory: .
