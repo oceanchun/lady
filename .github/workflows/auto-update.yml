@@ -26,7 +26,7 @@ jobs:
 
       - name: Merge upstream changes
         run: |
-          git merge --no-edit lady/main
+          git merge main lady/main
 
       - name: Push changes
         uses: ad-m/github-push-action@master
