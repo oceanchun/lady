@@ -31,4 +31,4 @@ jobs:
           branch: main
           github_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           force: true
-          github_url: https://github.com/oceanchun
+          repository: lady
