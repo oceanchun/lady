@@ -3,6 +3,9 @@ name: Auto update upstream
 on:
   push:
     branches: [main]
+    
+permissions:
+  contents: write
 
 jobs:
   auto-update:
@@ -18,7 +21,7 @@ jobs:
 
       - name: Fetch upstream
         run: |
-          git remote add lady https://github.com/Gnuyoah/Thread.git
+          git remote add upstream https://github.com/Gnuyoah/Thread.git
           git fetch lady
 
       - name: Merge upstream changes
