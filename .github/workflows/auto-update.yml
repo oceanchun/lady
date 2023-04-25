@@ -18,12 +18,12 @@ jobs:
 
       - name: Fetch upstream
         run: |
-          git remote add Thread https://github.com/Gnuyoah/Thread.git
-          git fetch Thread
+          git remote add lady https://github.com/Gnuyoah/Thread.git
+          git fetch lady
 
       - name: Merge upstream changes
         run: |
-          git merge --no-edit lady/main --allow-unrelated-histories
+          git merge --no-edit Thread/main --allow-unrelated-histories
 
       - name: Push changes
         uses: ad-m/github-push-action@master
