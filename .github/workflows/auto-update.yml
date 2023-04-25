@@ -26,5 +26,6 @@ jobs:
           git merge --no-edit lady/main --allow-unrelated-histories
 
       - name: Push changes
+        run: |
           git push origin main
 
