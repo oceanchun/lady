@@ -3,9 +3,8 @@ name: Auto update upstream
 on:
   push:
     branches: [main]
-    
-permissions:
-  contents: write
+  schedule:
+    - cron: '0 */6 * * *'  # 每6小时同步一次
 
 jobs:
   auto-update:
@@ -14,23 +13,16 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Set git config
-        run: |
-          git config --global user.email "actions@github.com"
-          git config --global user.name "Auto Update Bot"
-
       - name: Fetch upstream
         run: |
-          git remote add Thread https://github.com/Gnuyoah/Thread.git
-          git fetch Thread
-
-      - name: Merge upstream changes
+          git remote add upstream https://github.com/Gnuyoah/Thread.git
+          git fetch upstream
+          
+      - name: Sync with upstream
         run: |
-          git merge Thread/main
+          git fetch upstream
+          git checkout main
+          git merge upstream/main --no-edit
+          git push
 
-      - name: Push changes
-        uses: ad-m/github-push-action@master
-        with:
-          branch: main
-          github_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-          force: true
+    
