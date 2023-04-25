@@ -22,7 +22,7 @@ jobs:
 
       - name: Sync changes
         run: |
-          cd forked_repo
+          cd main
           git config user.name "Auto Update Bot"
           git config user.email "actions@github.com"
           git remote add upstream https://github.com/Gnuyoah/Thread.git
