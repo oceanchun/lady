@@ -1,31 +1,37 @@
-name: Sync Repo
+name: Auto update upstream
 
 on:
-  schedule:
-    - cron: '0 * * * *' # 每小时同步一次
+  push:
+    branches: [main]
 
 jobs:
-  sync:
+  auto-update:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout main repo
+      - name: Checkout
         uses: actions/checkout@v2
-        with:
-          repository: Thread
-          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }} # 主仓库的访问令牌
 
-      - name: Checkout forked repo
-        uses: actions/checkout@v2
-        with:
-          repository: lady
-          path: main
-
-      - name: Sync changes
+      - name: Set git config
         run: |
-          cd main
-          git config user.name "Auto Update Bot"
-          git config user.email "actions@github.com"
-          git remote add upstream https://github.com/Gnuyoah/Thread.git
-          git fetch upstream
-          git merge upstream/main
-          git push
+          git config --global user.email "actions@github.com"
+          git config --global user.name "Auto Update Bot"
+
+      - name: Fetch upstream
+        run: |
+          git remote add lady https://github.com/Gnuyoah/Thread.git
+          git fetch lady
+
+      - name: Merge upstream changes
+        run: |
+          git merge --no-edit lady/main --allow-unrelated-histories
+
+      - name: Push changes
+        run: |
+          git push origin main
+          uses: ad-m/github-push-action@main
+          with:
+            branch: main
+            github_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+            force: true
+            github_url: https://github.com
+            directory: .
