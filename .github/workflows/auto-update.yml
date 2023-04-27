@@ -19,7 +19,7 @@ jobs:
           ref: main  # 本地分支名称
 
       - name: Merge Upstream Branch
-        run: git merge upstream/upstream-branch --no-edit  # 合并上游分支到本地分支
+        run: git merge upstream/main --no-edit  # 合并上游分支到本地分支
 
       - name: Push Changes
         uses: ad-m/github-push-action@master
