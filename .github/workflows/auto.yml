@@ -10,7 +10,7 @@ jobs:
       - name: Checkout Upstream Branch
         uses: actions/checkout@v2
         with:
-          repository: Gnuyoah/Thread  # 上游仓库信息
+          repository: gtihub.com/Gnuyoah/Thread  # 上游仓库信息
           ref: main  # 上游分支名称
 
       - name: Checkout Main Branch
