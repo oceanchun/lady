@@ -13,6 +13,9 @@ jobs:
           repository: Gnuyoah/Thread  # 上游仓库信息
           ref: main  # 上游分支名称
 
+      - name: Add Upstream Remote
+        run: git remote add upstream https://github.com/Gnuyoah/Thread.git
+
       - name: Checkout Main Branch
         uses: actions/checkout@v2
         with:
