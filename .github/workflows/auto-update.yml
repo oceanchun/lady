@@ -8,6 +8,9 @@ jobs:
   auto-update:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        
       - name: Fetch upstream
         run: |
           git remote add upstream https://github.com/Gnuyoah/Thread.git
