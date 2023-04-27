@@ -1,7 +1,7 @@
 name: Sync1 with Upstream
 on:
-  schedule:
-    - cron: '0 */2 * * *'  # 每两个小时同步一次
+  push:
+    branches: [main]
 
 jobs:
   sync:
