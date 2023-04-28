@@ -1,7 +1,7 @@
-name: Sync1 with Upstream
+name: Sync Upstream
 on:
-  push:
-    branches: [main]
+  schedule:
+    - cron: '0 0 * * *' # 每天 UTC 时间 0 点运行
 
 jobs:
   sync:
@@ -10,8 +10,8 @@ jobs:
       - name: Checkout Upstream Branch
         uses: actions/checkout@v2
         with:
-          repository: Gnuyoah/Thread  # 上游仓库信息
-          ref: main  # 上游分支名称
+          repository: Gnuyoah/Thread
+          ref: main
 
       - name: Add Upstream Remote
         run: git remote add upstream https://github.com/Gnuyoah/Thread.git
@@ -19,13 +19,13 @@ jobs:
       - name: Checkout Main Branch
         uses: actions/checkout@v2
         with:
-          ref: main  # 本地分支名称
+          repository: oceanchun/lady
+          ref: main
 
       - name: Merge Upstream Branch
         run: |
           git fetch upstream
           git merge --ff-only upstream/main
-
 
       - name: Push Changes
         uses: ad-m/github-push-action@master
