@@ -16,7 +16,7 @@ jobs:
           ref: main  # 上游分支名称
 
       - name: Add Upstream Remote
-        run: git remote add main https://github.com/Gnuyoah/Thread.git
+        run: git remote add Thread https://github.com/Gnuyoah/Thread.git
 
       - name: Checkout Main Branch
         uses: actions/checkout@v2
@@ -25,9 +25,9 @@ jobs:
 
       - name: Merge Upstream Branch
         run: |
-          git fetch main
-          git checkout main
-          git merge --ff-only main/main
+          git fetch Thread
+          git checkout Thread
+          git merge --ff-only Thread/main
 
       - name: Push Changes
         uses: ad-m/github-push-action@master
